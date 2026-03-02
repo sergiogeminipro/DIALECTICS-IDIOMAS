@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Backup folders
+"DOC APP/"
+"dialectics idiomas v1/"
