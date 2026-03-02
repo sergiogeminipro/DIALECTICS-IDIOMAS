@@ -24,4 +24,9 @@
       };
     };
   };
+  idx.lifecycle = {
+    onCreate = {
+      install = "npm install";
+    };
+  };
 }
