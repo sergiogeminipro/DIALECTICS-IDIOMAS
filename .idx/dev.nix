@@ -28,5 +28,8 @@
     onCreate = {
       install = "npm install";
     };
+    onStart = {
+      install = "npm install";
+    };
   };
 }
