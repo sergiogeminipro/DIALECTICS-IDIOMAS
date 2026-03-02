@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Word, Story } from '../types';
 import { GeminiService } from '../services/geminiService';
@@ -31,64 +30,17 @@ const StoryView: React.FC<Props> = ({ words, stories, onSaveStory, onBack, gemin
   // Live API States
   const [isLiveActive, setIsLiveActive] = useState(false);
   const [isLiveConnected, setIsLiveConnected] = useState(false);
-  const liveSessionRef = useRef<any>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const inputAudioContextRef = useRef<AudioContext | null>(null);
-  const nextStartTimeRef = useRef(0);
-  const sourcesRef = useRef(new Set<AudioBufferSourceNode>());
+  const [liveCaption, setLiveCaption] = useState('');
 
   const synthRef = useRef(window.speechSynthesis);
 
-  // Helper functions for Live API
-  const encode = (bytes: Uint8Array) => {
-    let binary = '';
-    const len = bytes.byteLength;
-    for (let i = 0; i < len; i++) binary += String.fromCharCode(bytes[i]);
-    return btoa(binary);
-  };
-
-  const decode = (base64: string) => {
-    const binaryString = atob(base64);
-    const len = binaryString.length;
-    const bytes = new Uint8Array(len);
-    for (let i = 0; i < len; i++) bytes[i] = binaryString.charCodeAt(i);
-    return bytes;
-  };
-
-  const decodeAudioData = async (data: Uint8Array, ctx: AudioContext, sampleRate: number, numChannels: number): Promise<AudioBuffer> => {
-    const dataInt16 = new Int16Array(data.buffer);
-    const frameCount = dataInt16.length / numChannels;
-    const buffer = ctx.createBuffer(numChannels, frameCount, sampleRate);
-    for (let channel = 0; channel < numChannels; channel++) {
-      const channelData = buffer.getChannelData(channel);
-      for (let i = 0; i < frameCount; i++) {
-        channelData[i] = dataInt16[i * numChannels + channel] / 32768.0;
-      }
-    }
-    return buffer;
-  };
-
-  const createBlob = (data: Float32Array): Blob => {
-    const l = data.length;
-    const int16 = new Int16Array(l);
-    for (let i = 0; i < l; i++) int16[i] = data[i] * 32768;
-    return {
-      data: encode(new Uint8Array(int16.buffer)),
-      mimeType: 'audio/pcm;rate=16000',
-    };
-  };
-
   const startLiveCoach = async () => {
-    alert("La función de Tutor en Vivo (Audio) requiere un SDK experimental que está desactivado por ahora para garantizar la estabilidad del generador de texto.");
+    alert("La función de Tutor en Vivo (Audio) requiere un SDK experimental que está desactivado por ahora para garantizar la estabilidad del generador de texto. ¡Pronto estará disponible!");
+    setIsLiveActive(false);
+    setIsLiveConnected(false);
   };
 
   const stopLiveCoach = () => {
-    if (liveSessionRef.current) {
-      liveSessionRef.current.close();
-      liveSessionRef.current = null;
-    }
-    if (audioContextRef.current) audioContextRef.current.close();
-    if (inputAudioContextRef.current) inputAudioContextRef.current.close();
     setIsLiveActive(false);
     setIsLiveConnected(false);
   };
@@ -267,7 +219,7 @@ const StoryView: React.FC<Props> = ({ words, stories, onSaveStory, onBack, gemin
             )}
 
             <p className="text-[10px] font-black text-white/30 uppercase tracking-[0.3em] text-center px-6">
-              {isLiveConnected ? 'Escuchando tu pronunciación... Lee en voz alta' : 'Presiona el botón para conectar con el maestro'}
+              {isLiveConnected ? (liveCaption || 'Escuchando tu pronunciación... Lee en voz alta') : 'Presiona el botón para conectar con el maestro'}
             </p>
           </div>
         </div>

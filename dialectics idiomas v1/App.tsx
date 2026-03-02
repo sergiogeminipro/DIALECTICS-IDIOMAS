@@ -7,6 +7,7 @@ import ModuleApp from './components/ModuleApp';
 import AITutor from './components/AITutor';
 import UserHub from './components/UserHub';
 import AuthScreen from './components/AuthScreen';
+import AIStatusIndicator from './components/AIStatusIndicator';
 
 const AppContent: React.FC = () => {
   const { user, loading } = useAuth();
@@ -71,6 +72,7 @@ const AppContent: React.FC = () => {
 const App: React.FC = () => {
   return (
     <AuthProvider>
+      <AIStatusIndicator />
       <AppContent />
     </AuthProvider>
   );

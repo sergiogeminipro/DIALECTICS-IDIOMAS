@@ -187,6 +187,13 @@ const UserHub: React.FC<Props> = ({ onBack }) => {
                   </div>
                </div>
             )}
+
+            {/* APP VERSION */}
+            <div className="text-center pt-4 pb-8">
+               <span className="text-[9px] font-black tracking-widest uppercase text-slate-300/60 select-none">
+                  Dialectics Idiomas Version 1
+               </span>
+            </div>
          </div>
       </div>
    );

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { onAuthChange, loginWithEmail, loginWithGoogle, registerWithEmail, logout as firebaseLogout, User } from '../services/authService';
-import { saveUserProfile, migrateLocalStorageToFirestore } from '../services/firestoreService';
+import { saveUserProfile, migrateLocalStorageToFirestore, initializeNewUser } from '../services/firestoreService';
 
 interface AuthContextType {
     user: User | null;
@@ -30,6 +30,13 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         const unsubscribe = onAuthChange(async (firebaseUser) => {
             setUser(firebaseUser);
             if (firebaseUser) {
+                // Initialize user if not exists
+                await initializeNewUser(
+                    firebaseUser.uid,
+                    firebaseUser.email || '',
+                    firebaseUser.displayName || undefined
+                );
+
                 // Save profile & try migration on every login
                 await saveUserProfile(firebaseUser.uid, {
                     email: firebaseUser.email || '',
@@ -62,6 +69,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             setError(null);
             await loginWithEmail(email, password);
         } catch (e: any) {
+            console.error("Firebase Login Error:", e);
             setError(translateError(e.code));
             throw e;
         }

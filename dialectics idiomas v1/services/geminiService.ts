@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Initialize the Gemini API with the Vite environment variable
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "";
+const apiKey = import.meta.env.VITE_API_KEY || import.meta.env.VITE_GEMINI_API_KEY || "";
 const genAI = new GoogleGenerativeAI(apiKey);
 
 
@@ -10,6 +10,23 @@ export class GeminiService {
     // Remove markdown code blocks if present
     return text.replace(/```json\n?/, "").replace(/```\n?$/, "").trim();
   }
+
+  private emitStatus(status: 'idle' | 'loading' | 'success' | 'error') {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('ai-status', { detail: { status } }));
+    }
+  }
+
+  private setStatusSuccess() {
+    this.emitStatus('success');
+    setTimeout(() => this.emitStatus('idle'), 2000);
+  }
+
+  private setStatusError() {
+    this.emitStatus('error');
+    setTimeout(() => this.emitStatus('idle'), 3000);
+  }
+
 
   /**
    * Generates a structured grammar drill with 5 forms based on a specific lesson and vocabulary.
@@ -21,13 +38,14 @@ export class GeminiService {
     }
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash", // 2.5 flash is highly capable and fast
+      model: "gemini-1.5-flash", // 2.5 flash is highly capable and fast
       generationConfig: {
         responseMimeType: "application/json",
       }
     });
 
     try {
+      this.emitStatus('loading');
       const prompt = `Eres un experto profesor de inglés nativo. 
         Genera un ejercicio de entrenamiento gramatical para la lección: "${lesson}".
         NIVEL DEL ESTUDIANTE: ${level}
@@ -49,8 +67,10 @@ export class GeminiService {
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
+      this.setStatusSuccess();
       return JSON.parse(this.cleanJsonResponse(response.text()));
     } catch (e) {
+      this.setStatusError();
       console.error("Error generating drill:", e);
       return null;
     }
@@ -59,10 +79,11 @@ export class GeminiService {
   async evaluateTransformation(userAnswer: string, correctAnswer: string, lessonTitle: string): Promise<any> {
     if (!apiKey) return { isCorrect: false, feedback: "API Key missing", correction: correctAnswer };
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
+      model: "gemini-1.5-flash",
       generationConfig: { responseMimeType: "application/json" }
     });
     try {
+      this.emitStatus('loading');
       const prompt = `Evalúa la transformación gramatical:
         ESPERADA: "${correctAnswer}"
         ESTUDIANTE: "${userAnswer}"
@@ -70,16 +91,19 @@ export class GeminiService {
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
+      this.setStatusSuccess();
       return JSON.parse(this.cleanJsonResponse(response.text()));
     } catch (e) {
+      this.setStatusError();
       return { isCorrect: false, feedback: "Error en la evaluación.", correction: correctAnswer };
     }
   }
 
   async getTutorChatResponse(message: string, context: string): Promise<string> {
     if (!apiKey) return "Error: API Key no configurada.";
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
     try {
+      this.emitStatus('loading');
       const prompt = `Eres un Tutor de Inglés Experto.
         CONTEXTO: ${context}.
         USUARIO: "${message}".
@@ -87,8 +111,10 @@ export class GeminiService {
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
+      this.setStatusSuccess();
       return response.text() || "Lo siento, hubo un error.";
     } catch (e) {
+      this.setStatusError();
       return "Error de conexión con el tutor.";
     }
   }
@@ -96,17 +122,20 @@ export class GeminiService {
   async generateStory(words: string[], theme: string = "general"): Promise<any> {
     if (!apiKey) return null;
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.5-flash",
+      model: "gemini-1.5-flash",
       generationConfig: { responseMimeType: "application/json" }
     });
     try {
+      this.emitStatus('loading');
       const prompt = `Escribe una historia corta sobre "${theme}" usando estas palabras: ${words.join(", ")}.
         Responde en JSON: { "title": "string", "text": "string", "translation": "string", "pronunciation": "string" }`;
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
+      this.setStatusSuccess();
       return JSON.parse(this.cleanJsonResponse(response.text()));
     } catch (e) {
+      this.setStatusError();
       return null;
     }
   }
@@ -114,7 +143,7 @@ export class GeminiService {
   async generateVocabList(source: { type: 'theme' | 'file' | 'url', value: string, mimeType?: string }): Promise<any> {
     if (!apiKey) return null;
     const model = genAI.getGenerativeModel({
-      model: source.type === 'url' ? 'gemini-2.5-pro' : 'gemini-2.5-flash',
+      model: source.type === 'url' ? 'gemini-1.5-pro' : 'gemini-1.5-flash',
       generationConfig: { responseMimeType: "application/json" }
     });
     let promptText = "";
@@ -122,11 +151,14 @@ export class GeminiService {
     else promptText = `Extrae 10 palabras de este contenido: ${source.value}`;
 
     try {
+      this.emitStatus('loading');
       const prompt = `${promptText}. Responde en JSON: { "words": [{"en": "string", "es": "string", "pron": "string", "img": "string"}] }`;
       const result = await model.generateContent(prompt);
       const response = await result.response;
+      this.setStatusSuccess();
       return JSON.parse(this.cleanJsonResponse(response.text()));
     } catch (e) {
+      this.setStatusError();
       return null;
     }
   }
@@ -138,13 +170,16 @@ export class GeminiService {
       generationConfig: { responseMimeType: "application/json" }
     });
     try {
+      this.emitStatus('loading');
       const prompt = `Genera un ejercicio de escucha tipo ${type} sobre ${theme} para practicar ${grammarTopic}. Vocabulario: ${vocab.join(", ")}.
         Responde en JSON con campos: title, audioScript, keywords (array), lines (array de speaker/text), quiz (array de question/options/correctIdx).`;
 
       const result = await model.generateContent(prompt);
       const response = await result.response;
+      this.setStatusSuccess();
       return JSON.parse(this.cleanJsonResponse(response.text()));
     } catch (e) {
+      this.setStatusError();
       return null;
     }
   }

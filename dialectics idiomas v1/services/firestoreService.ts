@@ -20,6 +20,28 @@ export const saveUserProfile = async (uid: string, data: { email: string; displa
     }, { merge: true });
 };
 
+// ─── User Initialization (Root Document) ───────────────────────
+export const initializeNewUser = async (uid: string, email: string, displayName?: string) => {
+    const userRef = doc(db, 'users', uid);
+    const userDoc = await getDoc(userRef);
+
+    // Only create if it doesn't exist
+    if (!userDoc.exists()) {
+        await setDoc(userRef, {
+            uid,
+            email,
+            displayName: displayName || email.split('@')[0], // Default name if null
+            createdAt: Date.now(),
+            progress: {
+                level: 1,
+                xp: 0,
+                streak: 0,
+                wordsLearned: 0
+            }
+        });
+    }
+};
+
 // ─── User Stats ───────────────────────────────────────────────
 export const saveUserStats = async (uid: string, stats: UserStats) => {
     await setDoc(doc(db, 'users', uid, 'data', 'stats'), {

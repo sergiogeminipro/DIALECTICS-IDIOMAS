@@ -421,13 +421,20 @@ const AITutor: React.FC<Props> = ({ onBack }) => {
 
 
   const startLiveAPI = async () => {
-    alert("La función de Voz (Live API) está en mantenimiento debido a la migración a Vertex AI. El chat de texto sigue funcionando normalmente.");
+    alert("La función de Tutor en Vivo (Audio) requiere un SDK experimental que está desactivado por ahora para garantizar la estabilidad del generador de texto. ¡Pronto estará disponible!");
+    setIsLiveActive(false);
+    setIsLiveConnected(false);
+  };
+
+  const stopLiveAPI = () => {
+    setIsLiveActive(false);
+    setIsLiveConnected(false);
   };
 
 
   if (step === 'selection') {
     return (
-      <div className="flex flex-col h-full bg-white max-w-md mx-auto animate-in slide-in-from-bottom duration-500 overflow-hidden">
+      <div className="flex flex-col h-dvh bg-white max-w-md mx-auto animate-in slide-in-from-bottom duration-500 overflow-hidden">
         <div className="flex-1 overflow-y-auto p-8 pt-14 text-center">
           <div className="w-16 h-16 ai-gradient rounded-[1.2rem] flex items-center justify-center text-white text-2xl mx-auto mb-6 shadow-xl ai-glow"><Icon name="sliders" /></div>
           <h2 className="text-2xl font-black text-slate-800 tracking-tight">¿Qué quieres practicar?</h2>
@@ -453,7 +460,7 @@ const AITutor: React.FC<Props> = ({ onBack }) => {
 
   if (step === 'grammar_selection') {
     return (
-      <div className="flex flex-col h-full bg-slate-50 max-w-md mx-auto animate-in slide-in-from-right duration-500 overflow-hidden">
+      <div className="flex flex-col h-dvh bg-slate-50 max-w-md mx-auto animate-in slide-in-from-right duration-500 overflow-hidden">
         <div className="flex-1 overflow-y-auto p-8 pt-14">
           <div className="text-center mb-10"><div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-indigo-600 text-2xl mx-auto mb-4 shadow-lg"><Icon name="book-bookmark" /></div><h2 className="text-2xl font-black text-slate-800 tracking-tight">Ruta de Aprendizaje</h2><p className="text-slate-400 text-[10px] font-black mt-1 uppercase tracking-[0.2em]">Selecciona el tema a dominar</p></div>
           <div className="space-y-8 pb-10">
@@ -462,10 +469,33 @@ const AITutor: React.FC<Props> = ({ onBack }) => {
                 <h3 className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] ml-1">{lvl.title}</h3>
                 <div className="space-y-2">
                   {lvl.lessons.map(lesson => (
-                    <button key={lesson.id} onClick={() => setSelectedLesson(lesson)} className={`w-full p-5 rounded-[1.8rem] border-2 text-left transition-all relative overflow-hidden group ${selectedLesson?.id === lesson.id ? 'bg-white border-indigo-600 shadow-xl scale-[1.02]' : 'bg-white/60 border-white hover:border-indigo-200'}`}>
-                      <div className="relative z-10"><h4 className={`font-black text-sm ${selectedLesson?.id === lesson.id ? 'text-indigo-600' : 'text-slate-700'}`}>{lesson.title}</h4><p className="text-[11px] text-slate-400 font-bold mt-1 leading-relaxed">{lesson.desc}</p></div>
+                    <div
+                      key={lesson.id}
+                      onClick={() => {
+                        if (selectedLesson?.id === lesson.id) {
+                          startTraining();
+                        } else {
+                          setSelectedLesson(lesson);
+                        }
+                      }}
+                      className={`w-full p-5 rounded-[1.8rem] border-2 text-left transition-all relative overflow-hidden cursor-pointer group ${selectedLesson?.id === lesson.id ? 'bg-white border-indigo-600 shadow-xl scale-[1.02]' : 'bg-white/60 border-white hover:border-indigo-200'}`}
+                    >
+                      <div className="relative z-10">
+                        <h4 className={`font-black text-sm ${selectedLesson?.id === lesson.id ? 'text-indigo-600' : 'text-slate-700'}`}>{lesson.title}</h4>
+                        <p className="text-[11px] text-slate-400 font-bold mt-1 leading-relaxed">{lesson.desc}</p>
+                        {selectedLesson?.id === lesson.id && (
+                          <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-300">
+                            <button
+                              onClick={(e) => { e.stopPropagation(); startTraining(); }}
+                              className="w-full py-3 bg-indigo-600 text-white rounded-xl font-black text-xs shadow-md active:scale-95 transition-all text-center flex justify-center items-center gap-2 uppercase tracking-widest"
+                            >
+                              Empezar Clase <Icon name="bolt" className="text-xs" />
+                            </button>
+                          </div>
+                        )}
+                      </div>
                       {selectedLesson?.id === lesson.id && <div className="absolute top-0 right-0 w-12 h-12 bg-indigo-600 flex items-center justify-center rounded-bl-3xl text-white"><Icon name="check" className="text-sm" /></div>}
-                    </button>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -481,7 +511,7 @@ const AITutor: React.FC<Props> = ({ onBack }) => {
   }
 
   return (
-    <div className="flex flex-col h-full bg-slate-50 max-w-md mx-auto animate-in fade-in relative">
+    <div className="flex flex-col h-dvh bg-slate-50 max-w-md mx-auto animate-in fade-in relative">
       <div className="p-4 bg-white border-b flex justify-between items-center shrink-0">
         <div className="flex items-center gap-2">
           <button onClick={() => setStep('grammar_selection')} className="text-slate-400 p-2 hover:bg-slate-100 rounded-full"><Icon name="arrow-left" /></button>
@@ -624,7 +654,7 @@ const AITutor: React.FC<Props> = ({ onBack }) => {
             )}
 
             {isLiveActive ? (
-              <button onClick={() => setIsLiveActive(false)} className="px-12 py-4 bg-rose-50 text-rose-600 border border-rose-100 rounded-full font-black text-sm uppercase tracking-widest">Finalizar</button>
+              <button onClick={stopLiveAPI} className="px-12 py-4 bg-rose-50 text-rose-600 border border-rose-100 rounded-full font-black text-sm uppercase tracking-widest">Finalizar</button>
             ) : (
               <button onClick={startLiveAPI} className="px-14 py-5 ai-gradient text-white rounded-[2rem] font-black shadow-2xl ai-glow active:scale-95 transition-all flex items-center gap-3 uppercase tracking-widest"><Icon name="bolt" /> Iniciar Diálogo</button>
             )}

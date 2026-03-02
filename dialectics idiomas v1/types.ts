@@ -60,17 +60,17 @@ export interface AppSettings {
 }
 
 // Fix: Added missing 'flashcards_listening' and 'player_listening' to allow these views in ModuleApp and HomeView
-export type ViewState = 
-  | 'home' 
-  | 'flashcards' 
+export type ViewState =
+  | 'home'
+  | 'flashcards'
   | 'flashcards_hard'
   | 'flashcards_hard_group'
   | 'flashcards_listening'
-  | 'tutor' 
-  | 'exercises' 
+  | 'tutor'
+  | 'exercises'
   | 'exercises_menu'
-  | 'editor' 
-  | 'stories' 
+  | 'editor'
+  | 'stories'
   | 'player'
   | 'player_all'
   | 'player_hard'
@@ -105,4 +105,3 @@ export interface AIListeningExercise {
   }>;
   createdAt: number;
 }
-
