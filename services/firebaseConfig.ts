@@ -11,7 +11,7 @@ const firebaseConfig = {
     projectId: "dialectics-idiomas",
     storageBucket: "dialectics-idiomas.firebasestorage.app",
     messagingSenderId: "411243708564",
-    appId: "1:411243708564:web:002b888d005b1bcc26f481"
+    appId: "1:411243708564:web:ccd38c71e9ef6bd626f481"
 };
 
 const app = initializeApp(firebaseConfig);
