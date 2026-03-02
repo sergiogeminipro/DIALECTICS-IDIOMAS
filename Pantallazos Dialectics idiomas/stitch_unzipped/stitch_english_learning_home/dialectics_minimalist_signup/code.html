@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dialectics Minimalist Signup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4913ec",
+                        "background-light": "#fcfbff",
+                        "background-dark": "#151022",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .mesh-bg {
+            background-color: #fcfbff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(73, 19, 236, 0.03) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(73, 19, 236, 0.02) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(73, 19, 236, 0.03) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(73, 19, 236, 0.02) 0px, transparent 50%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="relative flex min-h-screen w-full flex-col mesh-bg p-6 md:max-w-[480px] mx-auto">
+<!-- Header / Logo Section -->
+<header class="flex flex-col items-center pt-12 pb-16">
+<div class="mb-8 flex items-center justify-center">
+<span class="text-primary text-2xl font-bold tracking-tight">Dialectics</span>
+<span class="ml-1 text-primary/60 text-xs font-medium uppercase tracking-widest">AI</span>
+</div>
+<h1 class="text-4xl font-light tracking-tight text-slate-900 dark:text-white text-center">
+                Comienza tu viaje
+            </h1>
+<p class="mt-4 text-slate-500 dark:text-slate-400 text-center font-normal text-sm max-w-[280px]">
+                Domina modismos y expresiones con inteligencia artificial premium.
+            </p>
+</header>
+<!-- Form Section -->
+<main class="flex-1 flex flex-col gap-5">
+<div class="space-y-4">
+<div class="relative group">
+<label class="sr-only">Nombre</label>
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">person</span>
+</div>
+<input class="w-full h-14 pl-12 pr-5 rounded-full border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-slate-400 text-base outline-none" placeholder="Nombre completo" type="text"/>
+</div>
+<div class="relative group">
+<label class="sr-only">Email</label>
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+</div>
+<input class="w-full h-14 pl-12 pr-5 rounded-full border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-slate-400 text-base outline-none" placeholder="Correo electrónico" type="email"/>
+</div>
+<div class="relative group">
+<label class="sr-only">Contraseña</label>
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<input class="w-full h-14 pl-12 pr-14 rounded-full border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/50 backdrop-blur-sm focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all placeholder:text-slate-400 text-base outline-none" placeholder="Contraseña" type="password"/>
+<button class="absolute inset-y-0 right-5 flex items-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full h-14 mt-4 bg-primary text-white font-semibold rounded-full shadow-lg shadow-primary/25 hover:bg-primary/90 active:scale-[0.98] transition-all text-lg">
+                Crear Cuenta
+            </button>
+<!-- Social Login Divider -->
+<div class="flex items-center gap-4 my-6">
+<div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+<span class="text-xs font-medium text-slate-400 uppercase tracking-widest">O utiliza tu cuenta de</span>
+<div class="h-px flex-1 bg-slate-200 dark:bg-slate-800"></div>
+</div>
+<!-- Social Button -->
+<button class="w-full h-14 flex items-center justify-center gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors shadow-sm">
+<img alt="Google" class="w-5 h-5" data-alt="Logotipo de Google para inicio de sesión social" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzAGGqy5CGnzZD7j30fLXuM4qYt5sNVM0jKJVU8tB7A9eKO5bChs6O79VwHma4hCvgCe8ybZbaaFPnbMF8fUSQpJ9Io3m39X1dJRW5O4LIAqHOylTctTG-HaNwKQWyJFE0RQzOgpnsaiqRU1dEqnxhWcDKZ8rwhllw_DPtUZ0yohPcw8m48wOVYOOPHYT0TQIR3OyIsSFL_ekrh7mqWwrwXGWUbwRL80q3R_BPHvOcVBniQaFdgsQXo7eLuYNRZ_OSaigOv6MUKkAT"/>
+<span class="font-medium text-slate-700 dark:text-slate-200">Google</span>
+</button>
+</main>
+<!-- Footer -->
+<footer class="mt-12 pb-8 flex flex-col items-center gap-6">
+<p class="text-slate-500 dark:text-slate-400 text-sm">
+                ¿Ya tienes una cuenta? 
+                <a class="text-primary font-semibold hover:underline decoration-2 underline-offset-4 ml-1" href="#">Iniciar sesión</a>
+</p>
+<div class="flex gap-4">
+<a class="text-[10px] text-slate-400 hover:text-primary uppercase tracking-tighter" href="#">Privacidad</a>
+<span class="text-slate-300">•</span>
+<a class="text-[10px] text-slate-400 hover:text-primary uppercase tracking-tighter" href="#">Términos</a>
+</div>
+</footer>
+</div>
+</body></html>

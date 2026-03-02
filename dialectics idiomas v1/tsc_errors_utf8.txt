@@ -1,0 +1,9 @@
+﻿components/FlashcardSession.tsx(74,35): error TS2339: Property 'difficulty' does not exist on type 'unknown'.
+components/FlashcardSession.tsx(74,64): error TS2339: Property 'difficulty' does not exist on type 'unknown'.
+components/FlashcardSession.tsx(74,127): error TS2339: Property 'listeningFocus' does not exist on type 'unknown'.
+components/FlashcardSession.tsx(152,13): error TS2322: Type '{ id: unknown; listeningFocus: false; difficulty: "easy"; }[]' is not assignable to type '{ id: string; difficulty?: "hard" | "medium" | "easy" | "new"; listeningFocus?: boolean; }[]'.
+  Type '{ id: unknown; listeningFocus: false; difficulty: "easy"; }' is not assignable to type '{ id: string; difficulty?: "hard" | "medium" | "easy" | "new"; listeningFocus?: boolean; }'.
+    Types of property 'id' are incompatible.
+      Type 'unknown' is not assignable to type 'string'.
+components/ModuleSelector.tsx(18,8): error TS2307: Cannot find module 'lucide-react' or its corresponding type declarations.
+

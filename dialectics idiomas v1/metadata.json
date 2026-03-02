@@ -1,0 +1,7 @@
+{
+  "name": "DIALECTICS IA Versión enero 2026",
+  "description": "Una aplicación avanzada para aprender vocabulario en inglés potenciada por Inteligencia Artificial, con tutores en tiempo real, generación de ejercicios gramaticales, historias personalizadas e imágenes para tarjetas.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

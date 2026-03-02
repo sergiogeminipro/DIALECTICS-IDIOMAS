@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dialectics AI Chat (Light)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2a19e6",
+                        "primary-light": "#5c4ef2",
+                        "slate-mesh": "#f8fafc",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "3xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+            background-image: radial-gradient(#e2e8f0 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        .ai-bubble {
+            background: white;
+            border: 1px solid rgba(42, 25, 230, 0.15);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        }
+        .user-bubble {
+            background: #5c4ef2;
+            color: white;
+            box-shadow: 0 4px 12px rgba(42, 25, 230, 0.15);
+        }
+        .header-glass {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(42, 25, 230, 0.05);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(42, 25, 230, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-slate-900 antialiased overflow-hidden h-screen flex flex-col">
+<header class="header-glass sticky top-0 z-50 pt-12 pb-5 px-6 rounded-b-3xl shadow-sm">
+<div class="absolute top-2 left-0 right-0 px-8 flex justify-between items-center text-[11px] font-bold text-slate-400">
+<span>9:41</span>
+<div class="flex gap-1.5 items-center">
+<span class="material-symbols-outlined text-[14px]">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[14px]">wifi</span>
+<span class="material-symbols-outlined text-[14px]">battery_full</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 text-primary border border-slate-100 transition-all active:scale-90">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex flex-col items-center">
+<div class="relative">
+<div class="w-11 h-11 rounded-full border-2 border-primary/10 p-0.5 overflow-hidden">
+<img alt="AI Avatar" class="w-full h-full object-cover rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGBP4xWKynqGLJiQpiB2hokvg0JfhGuytBsIYxaJkQlGfTMW-UmrXvemKp0BPVRQg_xpx934YQnK3KCOq4XNo2S8TITu2AIA615UjYFYyV4GWoakC_xuT9rOOkDNBm85B_EwJsY9QYF0JCdaayaTesV_87WlIJKkHLgJ4Ta0meMJFmoDJfpNvmv77ZYZfmji01eadseNxPBiG5mH4VMnc6rJDh6q-z5wBXUTAdzOhyKuh2ppuwjSPpTK6IeQkKE5MVV1BtmVRLaQQD"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+<h1 class="text-primary font-bold mt-1 text-sm tracking-tight">Max AI Tutor</h1>
+<span class="text-slate-400 text-[9px] uppercase tracking-[0.15em] font-bold">English Specialist</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 text-primary border border-slate-100">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+<div class="flex justify-center gap-2 mt-4">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 border border-orange-100">
+<span class="material-symbols-outlined text-orange-500 text-[14px] fill-orange-500">local_fire_department</span>
+<span class="text-orange-700 text-[10px] font-bold uppercase tracking-wide">12 Day Streak</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100">
+<span class="material-symbols-outlined text-primary text-[14px] fill-primary">grade</span>
+<span class="text-primary text-[10px] font-bold uppercase tracking-wide">240 XP Today</span>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto px-5 py-6 space-y-8">
+<div class="flex justify-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] bg-white px-4 py-1.5 rounded-full shadow-sm border border-slate-100">Today • 10:45 AM</span>
+</div>
+<div class="flex gap-3 max-w-[90%]">
+<div class="flex-shrink-0 self-end mb-1">
+<div class="w-8 h-8 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10">
+<span class="material-symbols-outlined text-primary text-[16px]">smart_toy</span>
+</div>
+</div>
+<div class="space-y-1.5">
+<div class="ai-bubble p-4 rounded-2xl rounded-bl-none text-slate-700 text-[15px] leading-relaxed">
+                ¡Hola! ¿Cómo estuvo tu mañana? Ready to practice some past tense today?
+            </div>
+<div class="flex items-center gap-2 px-1">
+<button class="text-[10px] font-bold text-primary flex items-center gap-1 opacity-80 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[14px]">translate</span> VER TRADUCCIÓN
+                </button>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end space-y-1.5">
+<div class="user-bubble p-4 rounded-2xl rounded-br-none max-w-[85%]">
+<p class="text-[15px] leading-relaxed font-medium">
+                Hola Max. My morning was good. I go to the park and I see a dog.
+            </p>
+</div>
+<span class="text-[10px] text-slate-400 font-medium px-2 flex items-center gap-1">
+            Read 10:47 AM <span class="material-symbols-outlined text-[12px] text-primary">done_all</span>
+</span>
+</div>
+<div class="flex gap-3 max-w-[92%]">
+<div class="flex-shrink-0 self-end mb-1">
+<div class="w-8 h-8 rounded-full bg-amber-50 flex items-center justify-center border border-amber-100">
+<span class="material-symbols-outlined text-amber-600 text-[16px]">auto_fix_high</span>
+</div>
+</div>
+<div class="space-y-2">
+<div class="ai-bubble p-4 rounded-2xl rounded-bl-none text-slate-700 text-[15px] leading-relaxed">
+<p class="mb-3">¡Casi perfecto! But since you're talking about the morning (past), we should use past tense verbs.</p>
+<div class="bg-slate-50 border border-slate-100 rounded-xl p-3 space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-red-400 text-[16px]">close</span>
+<span class="text-slate-400 line-through text-sm">I go to the park...</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-500 text-[16px]">check_circle</span>
+<span class="text-slate-800 font-bold text-sm">I went to the park and I saw a dog.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2 justify-end pt-2">
+<button class="px-4 py-2 rounded-full border border-primary/20 bg-white text-primary text-xs font-bold shadow-sm hover:bg-primary/5 transition-colors">
+            Explain "Went"
+        </button>
+<button class="px-4 py-2 rounded-full border border-primary/20 bg-white text-primary text-xs font-bold shadow-sm hover:bg-primary/5 transition-colors">
+            Repeat please
+        </button>
+</div>
+</main>
+<footer class="p-6 pb-8 bg-white/80 backdrop-blur-md border-t border-slate-100">
+<div class="flex items-end gap-3 max-w-4xl mx-auto">
+<div class="flex-1 relative flex items-center">
+<button class="absolute left-4 w-6 h-6 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mic</span>
+</button>
+<input class="w-full bg-slate-50 border border-slate-100 rounded-2xl py-4 pl-12 pr-12 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary/30 text-slate-700 placeholder-slate-400 transition-all" placeholder="Escribe en inglés o español..." type="text"/>
+<button class="absolute right-4 w-6 h-6 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">image</span>
+</button>
+</div>
+<button class="w-14 h-14 bg-primary rounded-full flex items-center justify-center shadow-lg shadow-primary/25 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-white text-[24px]">send</span>
+</button>
+</div>
+<div class="mt-6 flex justify-center">
+<div class="w-32 h-1.5 bg-slate-200 rounded-full"></div>
+</div>
+</footer>
+
+</body></html>

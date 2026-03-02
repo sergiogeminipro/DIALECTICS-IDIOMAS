@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dialectics Flashcard Session - Light</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38bdf8",
+                        "sky-tint": "#f0f9ff",
+                        "slate-dark": "#0f172a",
+                        "easy-pastel": "#dcfce7",
+                        "medium-pastel": "#fef3c7",
+                        "hard-pastel": "#fee2e2",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2.5rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer base {
+            body {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.05);
+        }
+        .ios-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-sky-tint text-slate-dark min-h-screen flex flex-col font-display overflow-hidden select-none">
+<div class="h-12 w-full"></div>
+<header class="flex items-center justify-between px-6 py-4">
+<button class="flex items-center justify-center size-11 rounded-full bg-white shadow-sm border border-slate-200/50 text-slate-dark active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-extrabold uppercase tracking-[0.15em] text-primary mb-0.5">Dialectics Idiomas</span>
+<h2 class="text-sm font-extrabold text-slate-dark/40 tracking-tight">Variante 3 de 5</h2>
+</div>
+<button class="flex items-center justify-center size-11 rounded-full bg-white shadow-sm border border-slate-200/50 text-slate-dark active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-2xl">more_horiz</span>
+</button>
+</header>
+<div class="px-8 mt-4">
+<div class="flex justify-between items-end mb-3">
+<span class="text-xs font-bold text-slate-dark/50">Progreso de sesión</span>
+<span class="text-sm font-extrabold text-slate-dark">12/20</span>
+</div>
+<div class="h-3 w-full bg-white/60 rounded-full p-0.5 shadow-inner">
+<div class="h-full bg-primary rounded-full relative" style="width: 60%;">
+<div class="absolute inset-0 bg-white/20 rounded-full"></div>
+</div>
+</div>
+</div>
+<main class="flex-1 flex flex-col items-center justify-center px-6 py-6 relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-primary/10 rounded-full blur-[80px] -z-10"></div>
+<div class="w-full max-w-sm aspect-[4/5] glass-card rounded-lg flex flex-col items-center justify-between p-10 relative group">
+<div class="text-center">
+<span class="px-4 py-1.5 rounded-full bg-sky-50 text-primary text-[11px] font-extrabold uppercase tracking-widest border border-sky-100/50">Inglés</span>
+</div>
+<div class="flex-1 flex flex-col items-center justify-center text-center space-y-6">
+<div class="space-y-2">
+<h1 class="text-5xl font-extrabold tracking-tight text-slate-dark">Understanding</h1>
+<p class="text-slate-dark/40 text-lg font-semibold italic">/ˌʌndərˈstændɪŋ/</p>
+</div>
+<div class="w-16 h-1 bg-slate-100 rounded-full"></div>
+<div class="space-y-1">
+<span class="text-[10px] font-bold text-slate-dark/30 uppercase tracking-widest">Español</span>
+<h3 class="text-3xl font-bold text-slate-dark/80">Entendimiento</h3>
+</div>
+</div>
+<div class="w-full flex justify-center">
+<button class="size-16 rounded-full bg-primary text-white flex items-center justify-center shadow-lg shadow-sky-200 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-4xl font-bold">volume_up</span>
+</button>
+</div>
+<div class="absolute bottom-4 inset-x-0 flex justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-slate-200 mx-1"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary mx-1"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-slate-200 mx-1"></div>
+</div>
+</div>
+<p class="mt-6 text-slate-dark/40 text-xs font-bold tracking-wide flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">touch_app</span>
+            Toca para ver ejemplos
+        </p>
+</main>
+<footer class="px-6 pb-14 pt-4 bg-white/30 backdrop-blur-sm rounded-t-[3rem] border-t border-white/50">
+<h4 class="text-center text-slate-dark/60 text-[10px] font-extrabold uppercase tracking-[0.2em] mb-6">¿Qué tan difícil fue?</h4>
+<div class="grid grid-cols-3 gap-4">
+<button class="group flex flex-col items-center gap-2.5">
+<div class="w-full h-16 rounded-2xl bg-hard-pastel border-b-4 border-red-200 flex items-center justify-center active:translate-y-1 active:border-b-0 transition-all duration-75">
+<span class="material-symbols-outlined text-slate-dark text-3xl font-bold">sentiment_very_dissatisfied</span>
+</div>
+<span class="text-[10px] font-extrabold text-slate-dark tracking-tighter">DIFÍCIL</span>
+</button>
+<button class="group flex flex-col items-center gap-2.5">
+<div class="w-full h-16 rounded-2xl bg-medium-pastel border-b-4 border-amber-200 flex items-center justify-center active:translate-y-1 active:border-b-0 transition-all duration-75">
+<span class="material-symbols-outlined text-slate-dark text-3xl font-bold">sentiment_neutral</span>
+</div>
+<span class="text-[10px] font-extrabold text-slate-dark tracking-tighter">MEDIO</span>
+</button>
+<button class="group flex flex-col items-center gap-2.5">
+<div class="w-full h-16 rounded-2xl bg-easy-pastel border-b-4 border-emerald-200 flex items-center justify-center active:translate-y-1 active:border-b-0 transition-all duration-75">
+<span class="material-symbols-outlined text-slate-dark text-3xl font-bold">sentiment_very_satisfied</span>
+</div>
+<span class="text-[10px] font-extrabold text-slate-dark tracking-tighter">FÁCIL</span>
+</button>
+</div>
+</footer>
+<div class="fixed bottom-0 left-0 right-0 h-8 bg-white/30 pointer-events-none"></div>
+
+</body></html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dialectics Learning Path (Light)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#48c8e5",
+                        "background-offwhite": "#f8fafc",
+                        "accent-rose": "#fb7185",
+                        "accent-indigo": "#6366f1",
+                        "accent-amber": "#f59e0b",
+                        "dark-indigo": "#312e81",
+                        "dark-rose": "#881337",
+                        "dark-amber": "#78350f",
+                        "dark-slate": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        :root {
+            --gloss-white: #ffffff;
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f8fafc;
+        }
+        .gloss-card {
+            background: var(--gloss-white);
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+        .gloss-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0));
+            pointer-events: none;
+        }
+        .ios-tab-bar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display text-slate-900 min-h-screen pb-32">
+<header class="pt-14 pb-8 px-6 text-center">
+<div class="mb-4 inline-flex items-center justify-center size-20 bg-white shadow-lg shadow-slate-200/50 rounded-full text-5xl">
+        📚
+    </div>
+<h1 class="text-3xl font-bold tracking-tight text-dark-slate mb-1">Ruta de Aprendizaje</h1>
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-accent-indigo text-lg">auto_awesome</span>
+<p class="text-[11px] font-bold text-slate-500 uppercase tracking-[0.2em]">1,250 Palabras Aprendidas</p>
+</div>
+</header>
+<section class="px-6 mb-10">
+<div class="flex justify-between items-end mb-5 px-1">
+<h2 class="text-xl font-bold text-dark-slate">Objetivos</h2>
+<button class="text-accent-indigo text-sm font-bold">Ver todos</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="gloss-card p-5 rounded-lg flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="bg-white size-10 rounded-full flex items-center justify-center shadow-sm border border-slate-50">
+<span class="material-symbols-outlined text-primary">flight_takeoff</span>
+</div>
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">75%</span>
+</div>
+<div>
+<h3 class="font-bold text-base text-slate-800">Viajes</h3>
+<p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mb-2">PROGRESO ACTIVO</p>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-3/4 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="gloss-card p-5 rounded-lg flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="bg-white size-10 rounded-full flex items-center justify-center shadow-sm border border-slate-50">
+<span class="material-symbols-outlined text-accent-indigo">business_center</span>
+</div>
+<span class="text-xs font-bold text-accent-indigo bg-accent-indigo/10 px-2 py-1 rounded-full">40%</span>
+</div>
+<div>
+<h3 class="font-bold text-base text-slate-800">Negocios</h3>
+<p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mb-2">EN CURSO</p>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-accent-indigo h-full w-2/5 rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="gloss-card p-5 rounded-lg flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="bg-white size-10 rounded-full flex items-center justify-center shadow-sm border border-slate-50">
+<span class="material-symbols-outlined text-accent-rose">home</span>
+</div>
+<span class="text-xs font-bold text-accent-rose bg-accent-rose/10 px-2 py-1 rounded-full">90%</span>
+</div>
+<div>
+<h3 class="font-bold text-base text-slate-800">Vida Diaria</h3>
+<p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mb-2">CASI LISTO</p>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-accent-rose h-full w-[90%] rounded-full"></div>
+</div>
+</div>
+</div>
+<div class="gloss-card p-5 rounded-lg flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="bg-white size-10 rounded-full flex items-center justify-center shadow-sm border border-slate-50">
+<span class="material-symbols-outlined text-accent-amber">menu_book</span>
+</div>
+<span class="text-xs font-bold text-accent-amber bg-accent-amber/10 px-2 py-1 rounded-full">20%</span>
+</div>
+<div>
+<h3 class="font-bold text-base text-slate-800">Gramática</h3>
+<p class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mb-2">INICIADO</p>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-accent-amber h-full w-1/5 rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="px-6 flex flex-col gap-4 mb-12">
+<button class="flex items-center gap-4 bg-indigo-50/80 border border-indigo-100/50 hover:bg-indigo-100/80 p-5 rounded-lg w-full text-left transition-all active:scale-[0.98]">
+<div class="size-14 bg-white rounded-full flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-accent-indigo font-semibold">refresh</span>
+</div>
+<div class="flex-1">
+<p class="text-[10px] text-accent-indigo/80 font-bold uppercase tracking-[0.15em] mb-0.5">Reforzar Conceptos</p>
+<h4 class="text-lg font-bold text-dark-indigo">Repaso General</h4>
+</div>
+<span class="material-symbols-outlined text-dark-indigo/30">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 bg-rose-50/80 border border-rose-100/50 hover:bg-rose-100/80 p-5 rounded-lg w-full text-left relative transition-all active:scale-[0.98]">
+<div class="absolute -top-1 -right-1 flex size-6 items-center justify-center bg-accent-rose rounded-full text-[10px] font-bold text-white shadow-lg ring-4 ring-white">
+            3
+        </div>
+<div class="size-14 bg-white rounded-full flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-accent-rose font-semibold">auto_awesome</span>
+</div>
+<div class="flex-1">
+<p class="text-[10px] text-accent-rose/80 font-bold uppercase tracking-[0.15em] mb-0.5">Contenido Personalizado</p>
+<h4 class="text-lg font-bold text-dark-rose">Repaso Especial</h4>
+</div>
+<span class="material-symbols-outlined text-dark-rose/30">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 bg-cyan-50/80 border border-cyan-100/50 hover:bg-cyan-100/80 p-5 rounded-lg w-full text-left transition-all active:scale-[0.98]">
+<div class="size-14 bg-white rounded-full flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-primary font-semibold">headphones</span>
+</div>
+<div class="flex-1">
+<p class="text-[10px] text-primary/80 font-bold uppercase tracking-[0.15em] mb-0.5">Escucha Pasiva</p>
+<h4 class="text-lg font-bold text-slate-800">Reproductor General</h4>
+</div>
+<span class="material-symbols-outlined text-slate-800/30">chevron_right</span>
+</button>
+<button class="flex items-center gap-4 bg-amber-50/80 border border-amber-100/50 hover:bg-amber-100/80 p-5 rounded-lg w-full text-left transition-all active:scale-[0.98]">
+<div class="size-14 bg-white rounded-full flex items-center justify-center shrink-0 shadow-md">
+<span class="material-symbols-outlined text-accent-amber font-semibold">menu_book</span>
+</div>
+<div class="flex-1">
+<p class="text-[10px] text-accent-amber/80 font-bold uppercase tracking-[0.15em] mb-0.5">Lectura Inmersiva</p>
+<h4 class="text-lg font-bold text-dark-amber">Historias</h4>
+</div>
+<span class="material-symbols-outlined text-dark-amber/30">chevron_right</span>
+</button>
+</section>
+<nav class="fixed bottom-0 left-0 right-0 ios-tab-bar border-t border-slate-100 px-6 pb-8 pt-3 z-50">
+<div class="flex items-center justify-between max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-accent-indigo" href="#">
+<div class="relative">
+<span class="material-symbols-outlined fill-current">map</span>
+<div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 size-1.5 bg-accent-indigo rounded-full"></div>
+</div>
+<span class="text-[10px] font-black uppercase tracking-tighter">Ruta</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">bolt</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Práctica</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Perfil</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Ajustes</span>
+</a>
+</div>
+</nav>
+
+</body></html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dialectics Home Selector (Light)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6366f1",
+                        "background-light": "#f8fafc",
+                        "accent-orange": "#f97316",
+                        "module-blue": "#bae6fd", // Sky Blue
+                        "module-mint": "#bbf7d0", // Mint
+                        "module-lavender": "#e9d5ff", // Lavender
+                        "module-peach": "#ffedd5", // Soft Peach
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "3xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft-indigo': '0 10px 25px -5px rgba(99, 102, 241, 0.08), 0 8px 10px -6px rgba(99, 102, 241, 0.08)',
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            background-color: #f8fafc;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .ultra-rounded {
+            border-radius: 2.2rem;
+        }
+        .sticky-header {
+            background: rgba(248, 250, 252, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        .module-card {
+            transition: transform 0.2s ease;
+        }
+        .module-card:active {
+            transform: scale(0.97);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-slate-800 min-h-screen pb-32">
+<header class="sticky top-0 z-50 sticky-header px-6 pt-12 pb-4">
+<div class="flex items-center justify-between mb-5">
+<div class="flex items-center gap-3">
+<div class="size-12 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="text-white font-bold text-lg">12</span>
+</div>
+<div>
+<h1 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none mb-1">Nivel Actual</h1>
+<p class="text-lg font-extrabold text-slate-800">Maestro Dialéctico</p>
+</div>
+</div>
+<div class="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-slate-100 shadow-sm">
+<span class="material-symbols-outlined text-accent-orange fill-1 text-xl">local_fire_department</span>
+<span class="font-bold text-slate-700 text-lg">15</span>
+</div>
+</div>
+<div class="relative w-full h-3 bg-slate-200/50 rounded-full overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-primary w-[65%] rounded-full shadow-[0_0_12px_rgba(99,102,241,0.3)]"></div>
+</div>
+<div class="flex justify-between mt-2.5 px-1">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">1,250 XP</span>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">2,000 XP</span>
+</div>
+</header>
+<main class="px-6 py-6 space-y-9">
+<section>
+<button class="w-full ultra-rounded p-6 bg-gradient-to-br from-[#818cf8] to-[#a78bfa] text-left shadow-xl shadow-indigo-200/50 group relative overflow-hidden border border-white/30">
+<div class="absolute -right-4 -top-4 size-32 bg-white/20 rounded-full blur-3xl group-hover:bg-white/30 transition-all"></div>
+<div class="flex items-center gap-5 relative z-10">
+<div class="size-16 rounded-3xl bg-white/25 backdrop-blur-md flex items-center justify-center border border-white/40 shadow-sm">
+<span class="material-symbols-outlined text-white text-3xl">magic_button</span>
+</div>
+<div>
+<h2 class="text-white text-2xl font-extrabold tracking-tight">Tutor Maestro IA</h2>
+<p class="text-white/90 font-medium text-sm">Práctica de conversación real</p>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-white/70 group-hover:text-white group-hover:translate-x-1 transition-all">arrow_forward_ios</span>
+</div>
+</div>
+</button>
+</section>
+<section>
+<div class="flex justify-between items-baseline mb-5 px-1">
+<h3 class="text-xl font-extrabold text-slate-800">Módulos de Aprendizaje</h3>
+<span class="text-primary text-xs font-bold uppercase tracking-wider">Ver todos</span>
+</div>
+<div class="grid grid-cols-2 gap-5">
+<div class="module-card ultra-rounded p-6 bg-module-blue/60 border border-white shadow-soft-indigo flex flex-col h-52 relative overflow-hidden">
+<span class="material-symbols-outlined text-white/50 text-6xl absolute -right-4 -top-2">school</span>
+<div class="mt-auto relative z-10">
+<span class="text-blue-600/70 text-[10px] font-bold uppercase tracking-widest">Módulo 1</span>
+<h4 class="text-blue-900 text-xl font-extrabold leading-tight mt-1">Fundamentos Básicos</h4>
+</div>
+</div>
+<div class="module-card ultra-rounded p-6 bg-module-mint/60 border border-white shadow-soft-indigo flex flex-col h-52 relative overflow-hidden">
+<span class="material-symbols-outlined text-white/50 text-6xl absolute -right-4 -top-2">forum</span>
+<div class="mt-auto relative z-10">
+<span class="text-emerald-600/70 text-[10px] font-bold uppercase tracking-widest">Módulo 2</span>
+<h4 class="text-emerald-900 text-xl font-extrabold leading-tight mt-1">Conversación Fluida</h4>
+</div>
+</div>
+<div class="module-card ultra-rounded p-6 bg-module-lavender/60 border border-white shadow-soft-indigo flex flex-col h-52 relative overflow-hidden">
+<span class="material-symbols-outlined text-white/50 text-6xl absolute -right-4 -top-2">work</span>
+<div class="mt-auto relative z-10">
+<span class="text-purple-600/70 text-[10px] font-bold uppercase tracking-widest">Módulo 3</span>
+<h4 class="text-purple-900 text-xl font-extrabold leading-tight mt-1">Negocios Pro</h4>
+</div>
+</div>
+<div class="module-card ultra-rounded p-6 bg-module-peach/60 border border-white shadow-soft-indigo flex flex-col h-52 relative overflow-hidden">
+<span class="material-symbols-outlined text-white/50 text-6xl absolute -right-4 -top-2">auto_awesome</span>
+<div class="mt-auto relative z-10">
+<span class="text-orange-600/70 text-[10px] font-bold uppercase tracking-widest">Módulo 4</span>
+<h4 class="text-orange-900 text-xl font-extrabold leading-tight mt-1">Maestría Nativa</h4>
+</div>
+</div>
+</div>
+</section>
+<section class="space-y-4">
+<h3 class="text-xl font-extrabold text-slate-800 px-1">Cursos Personalizados</h3>
+<div class="glass-card ultra-rounded p-7 shadow-soft-indigo">
+<div class="flex items-center justify-between mb-5">
+<div class="flex items-center gap-3 flex-1">
+<input class="bg-transparent border-none p-0 text-xl font-extrabold focus:ring-0 text-slate-800 w-full" type="text" value="Viaje a Londres 2024"/>
+</div>
+<span class="material-symbols-outlined text-slate-300 cursor-pointer">edit</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-4 py-1.5 bg-indigo-50 text-primary rounded-full text-[11px] font-bold border border-indigo-100 shadow-sm">Vocabulario</span>
+<span class="px-4 py-1.5 bg-orange-50 text-accent-orange rounded-full text-[11px] font-bold border border-orange-100 shadow-sm">Nivel A1</span>
+</div>
+<button class="w-full py-4 border-2 border-dashed border-slate-200 ultra-rounded flex items-center justify-center gap-2 text-slate-400 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+<span class="font-bold">Agregar Lista</span>
+</button>
+</div>
+</section>
+<section>
+<div class="glass-card rounded-[2rem] p-5 flex items-center justify-between shadow-soft-indigo">
+<div class="flex items-center gap-4">
+<div class="size-11 rounded-2xl bg-indigo-50 flex items-center justify-center border border-indigo-100">
+<span class="material-symbols-outlined text-primary text-2xl fill-1">cloud_done</span>
+</div>
+<div>
+<p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Snapshot Backup</p>
+<p class="text-sm font-bold text-slate-700">Sincronizado hoy 14:02</p>
+</div>
+</div>
+<div class="p-2 rounded-full hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-slate-400">sync</span>
+</div>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-50 px-6 pb-8 pt-4 bg-gradient-to-t from-white via-white/95 to-transparent">
+<div class="bg-white/90 backdrop-blur-2xl border border-slate-100 rounded-full px-6 py-3 flex justify-between items-center shadow-2xl shadow-indigo-200/30">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">home</span>
+<span class="text-[9px] font-bold uppercase tracking-tight">Inicio</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="text-[9px] font-bold uppercase tracking-tight">Tutor</span>
+</a>
+<div class="relative -top-8">
+<button class="size-16 bg-primary rounded-full flex items-center justify-center shadow-xl shadow-indigo-300 border-4 border-white">
+<span class="material-symbols-outlined text-white text-3xl">add</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="text-[9px] font-bold uppercase tracking-tight">Ranking</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[9px] font-bold uppercase tracking-tight">Perfil</span>
+</a>
+</div>
+</nav>
+
+</body></html>
